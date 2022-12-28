@@ -13,6 +13,11 @@
 		B9F7C0B8295C87E7004A293E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F7C0B6295C87E7004A293E /* Main.storyboard */; };
 		B9F7C0BA295C87EA004A293E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9F7C0B9295C87EA004A293E /* Assets.xcassets */; };
 		B9F7C0BD295C87EA004A293E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F7C0BB295C87EA004A293E /* LaunchScreen.storyboard */; };
+		B9F7C0C5295C8855004A293E /* SpaceXModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7C0C4295C8855004A293E /* SpaceXModel.swift */; };
+		B9F7C0C9295C89D3004A293E /* SpaceXTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7C0C7295C89D3004A293E /* SpaceXTableViewCell.swift */; };
+		B9F7C0CA295C89D3004A293E /* SpaceXTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F7C0C8295C89D3004A293E /* SpaceXTableViewCell.xib */; };
+		B9F7C0D2295C93DC004A293E /* SpaceXAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7C0D1295C93DC004A293E /* SpaceXAPIHandler.swift */; };
+		B9F7C0D8295CD2FD004A293E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7C0D7295CD2FD004A293E /* Server.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		B9F7C0B9295C87EA004A293E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9F7C0BC295C87EA004A293E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9F7C0BE295C87EA004A293E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9F7C0C4295C8855004A293E /* SpaceXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXModel.swift; sourceTree = "<group>"; };
+		B9F7C0C7295C89D3004A293E /* SpaceXTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXTableViewCell.swift; sourceTree = "<group>"; };
+		B9F7C0C8295C89D3004A293E /* SpaceXTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceXTableViewCell.xib; sourceTree = "<group>"; };
+		B9F7C0D1295C93DC004A293E /* SpaceXAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXAPIHandler.swift; sourceTree = "<group>"; };
+		B9F7C0D7295CD2FD004A293E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,76 @@
 		B9F7C0AF295C87E7004A293E /* SpaceXList */ = {
 			isa = PBXGroup;
 			children = (
+				B9F7C0D6295CC5A8004A293E /* Constant */,
 				B9F7C0B0295C87E7004A293E /* AppDelegate.swift */,
 				B9F7C0B2295C87E7004A293E /* SceneDelegate.swift */,
-				B9F7C0B4295C87E7004A293E /* ViewController.swift */,
-				B9F7C0B6295C87E7004A293E /* Main.storyboard */,
+				B9F7C0D3295C944F004A293E /* Network */,
+				B9F7C0CB295C89E0004A293E /* Model */,
+				B9F7C0CE295C8A40004A293E /* ViewController */,
+				B9F7C0CD295C8A16004A293E /* View */,
 				B9F7C0B9295C87EA004A293E /* Assets.xcassets */,
-				B9F7C0BB295C87EA004A293E /* LaunchScreen.storyboard */,
 				B9F7C0BE295C87EA004A293E /* Info.plist */,
 			);
 			path = SpaceXList;
+			sourceTree = "<group>";
+		};
+		B9F7C0C6295C8916004A293E /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0C7295C89D3004A293E /* SpaceXTableViewCell.swift */,
+				B9F7C0C8295C89D3004A293E /* SpaceXTableViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		B9F7C0CB295C89E0004A293E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0C4295C8855004A293E /* SpaceXModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B9F7C0CD295C8A16004A293E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0C6295C8916004A293E /* CustomCell */,
+				B9F7C0CF295C8A55004A293E /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9F7C0CE295C8A40004A293E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0B4295C87E7004A293E /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B9F7C0CF295C8A55004A293E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0B6295C87E7004A293E /* Main.storyboard */,
+				B9F7C0BB295C87EA004A293E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B9F7C0D3295C944F004A293E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0D1295C93DC004A293E /* SpaceXAPIHandler.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B9F7C0D6295CC5A8004A293E /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				B9F7C0D7295CD2FD004A293E /* Server.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +199,7 @@
 				B9F7C0BD295C87EA004A293E /* LaunchScreen.storyboard in Resources */,
 				B9F7C0BA295C87EA004A293E /* Assets.xcassets in Resources */,
 				B9F7C0B8295C87E7004A293E /* Main.storyboard in Resources */,
+				B9F7C0CA295C89D3004A293E /* SpaceXTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F7C0D8295CD2FD004A293E /* Server.swift in Sources */,
+				B9F7C0C9295C89D3004A293E /* SpaceXTableViewCell.swift in Sources */,
 				B9F7C0B5295C87E7004A293E /* ViewController.swift in Sources */,
+				B9F7C0C5295C8855004A293E /* SpaceXModel.swift in Sources */,
+				B9F7C0D2295C93DC004A293E /* SpaceXAPIHandler.swift in Sources */,
 				B9F7C0B1295C87E7004A293E /* AppDelegate.swift in Sources */,
 				B9F7C0B3295C87E7004A293E /* SceneDelegate.swift in Sources */,
 			);
