@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SpaceXlaunchProtocol {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ViewModelProtocol{
     
     
-    var launchArray = [SpaceXModel]()
+    
     @IBOutlet weak var Spacetbl:UITableView!
+    var svm = SpaceXViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +20,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         Spacetbl.delegate = self
         Spacetbl.dataSource = self
         
-        let objectSpaceXApiHandler = SpaceXAPIHandler.shared
-        objectSpaceXApiHandler.delegate = self
-        objectSpaceXApiHandler.getData()
+        svm.delegate = self
+        svm.collectdatafromApi()
         
         Spacetbl.register(UINib(nibName: "SpaceXTableViewCell", bundle: nil), forCellReuseIdentifier: "SpaceXTableViewCell")
     }
@@ -31,21 +31,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         Spacetbl.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return launchArray.count
+        svm.getNumofRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SpaceXTableViewCell")as! SpaceXTableViewCell
-        cell.spaceXdata = launchArray[indexPath.row]
+        cell.spaceXdata = svm.getLaunchIndex(for: indexPath.row)
         return cell
     }
     
-    func collectdatafromApi(arrx: [SpaceXModel]) {
-        launchArray = arrx
+    
+    func didGetLaunchData() {
         DispatchQueue.main.async{
             self.Spacetbl.reloadData()
         }
     }
+
 
 
 }

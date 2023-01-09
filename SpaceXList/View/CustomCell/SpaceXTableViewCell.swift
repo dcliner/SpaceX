@@ -24,7 +24,6 @@ class SpaceXTableViewCell: UITableViewCell {
             
         }
     }
-    
 
    
     

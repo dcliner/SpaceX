@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class SpaceXModel:Codable{
+struct SpaceXModel:Codable{
         let id: String?
         let name: String?
         let details: String?

@@ -6,17 +6,28 @@
 //
 
 import XCTest
+@testable import SpaceXList
 
 class SpaceXAPIHandlerTest: XCTestCase {
 
+    var spaceXapiManager: SpaceXApiMockManager?
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        spaceXapiManager = SpaceXApiMockManager()
     }
 
     override func tearDownWithError() throws {
+        spaceXapiManager = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testGetData(){
+        spaceXapiManager?.getData(Urlstrings: .Launches, completion: { data in
+            XCTAssertNotNil(data)
+        })
+        
+    }
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

@@ -6,30 +6,29 @@
 //
 
 import Foundation
-class SpaceXAPIHandler{
-    static let shared = SpaceXAPIHandler.init()
-    var delegate:SpaceXlaunchProtocol?
-    private init() {}
-    func getData(){
-        guard let url = URL.init(string: ServerUrls.Launches.rawValue) else { return }
-        let urlrequest = URLRequest.init(url: url)
-        URLSession.shared.dataTask(with: urlrequest){data, urlresponse, error in
-            guard let data = data else {
-                print("No getting data")
+protocol SpaceXApiHandlerProtocol{
+    func getData(Urlstrings: ServerUrls, completion: @escaping(Data?) -> ())
+}
+class SpaceXAPIHandler: SpaceXApiHandlerProtocol{
+    func getData(Urlstrings: ServerUrls, completion: @escaping (Data?) -> ()) {
+        guard let url = URL(string: Urlstrings.rawValue)else{
+            return
+        
+    }
+    let request = URLRequest(url: url)
+    let session = URLSession.shared
+        let task  = session.dataTask(with:request) { data, response, error in
+            if error != nil{
                 return
             }
-            do {
-                let launches:[SpaceXModel] = try
-                JSONDecoder().decode([SpaceXModel].self, from: data)
-                self.delegate?.collectdatafromApi(arrx: launches)
-            } catch {
-                print(error)
+            guard let data = data else{
+                completion(nil)
+                return
             }
-        }.resume()
-    
+            completion(data)
+        }
+        task.resume()
     }
+    
 }
 
-protocol SpaceXlaunchProtocol {
-    func collectdatafromApi(arrx: [SpaceXModel])
-}
